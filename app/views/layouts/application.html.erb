@@ -2,13 +2,38 @@
 <html>
 <head>
   <title>BackupSystem</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="/">Backup System</a>
 
-<%= yield %>
+        <ul class="nav">
+          <li><%= link_to("Hosts", hosts_path) %></li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="sidebar span2">
+      
+      <ul class="nav nav-list">
+        <li class="nav-header">Navigation</li>
+        <li><%= link_to("Hosts", hosts_path) %></li>
+      </ul>
+
+      </div>
+    <div class="content span10">
+      <%= yield %>
+    </div>
+  </div>
 
 </body>
 </html>
