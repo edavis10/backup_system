@@ -36,3 +36,5 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+gem 'anjlab-bootstrap-rails', '>= 2.0', :require => 'bootstrap-rails'
