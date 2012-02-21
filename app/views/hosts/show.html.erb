@@ -1,15 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @host.name %>
-</p>
+<h2><%= @host.name %></h2>
 
 <p>
-  <b>Description:</b>
   <%= @host.description %>
 </p>
 
+<%= link_to 'Edit', edit_host_path(@host), :class => 'btn' %>
 
-<%= link_to 'Edit', edit_host_path(@host) %> |
-<%= link_to 'Back', hosts_path %>
+<h3>Backups</h3>
+
+<table class="backups table table-striped table-bordered">
+  <tr>
+    <th>ID</th>
+    <th>Created</th>
+    <th>Log</th>
+  </tr>
+  <% @host.backups.each do |backup| %>
+    <tr>
+      <td><%= backup.id %></td>
+      <td><%= format_datetime_to_iso(backup.created_at) %></td>
+      <td><%= truncate(backup.log) %></td>
+    </tr>
+  <% end %>
+</table>

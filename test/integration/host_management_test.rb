@@ -15,5 +15,24 @@ class HostManagementTest < ActionDispatch::IntegrationTest
     @host = Host.last
     assert_equal host_path(@host), current_path
   end
+
+  test "should see a list of backups for a given host" do
+    @host = Host.create!(:name => 'test.example.com')
+    @host.backups.create!(:log => 'backup1')
+    @host.backups.create!(:log => 'backup2')
+    @host.backups.create!(:log => 'backup3')
+
+    visit('/')
+    click_link('test.example.com')
+    puts @host.inspect
+    puts current_path
+    puts hosts_path(@host)
+    assert_equal host_path(@host), current_path
+
+    assert has_selector?('table.backups')
+    assert has_content?('backup1')
+    assert has_content?('backup2')
+    assert has_content?('backup3')
+  end
   
 end

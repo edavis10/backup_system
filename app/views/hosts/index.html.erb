@@ -6,14 +6,12 @@
     <th>Description</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @hosts.each do |host| %>
   <tr>
-    <td><%= host.name %></td>
+    <td><%= link_to(host.name, host) %></td>
     <td><%= host.description %></td>
-    <td><%= link_to 'Show', host, :class => 'btn btn-info' %></td>
     <td><%= link_to 'Edit', edit_host_path(host), :class => 'btn btn-info' %></td>
     <td><%= link_to 'Destroy', host, confirm: 'Are you sure?', method: :delete, :class => 'btn btn-danger' %></td>
   </tr>
