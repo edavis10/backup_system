@@ -1,5 +1,7 @@
 BackupSystem::Application.routes.draw do
-  resources :hosts
+  resources :hosts do
+    resources :backups, :only => [:create]
+  end
 
   root :to => 'hosts#index'
   
