@@ -1,6 +1,4 @@
 BackupSystem::Application.routes.draw do
-  resources :backups
-
   resources :hosts
 
   root :to => 'hosts#index'
