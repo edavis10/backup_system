@@ -34,7 +34,10 @@ gem 'jquery-rails'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
-
 gem 'anjlab-bootstrap-rails', '>= 2.0', :require => 'bootstrap-rails'
+
+group :development, :test do
+  gem "autotest"
+  gem "autotest-notification"
+  gem "autotest-rails"
+end
