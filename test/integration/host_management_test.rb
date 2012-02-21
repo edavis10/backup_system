@@ -24,9 +24,6 @@ class HostManagementTest < ActionDispatch::IntegrationTest
 
     visit('/')
     click_link('test.example.com')
-    puts @host.inspect
-    puts current_path
-    puts hosts_path(@host)
     assert_equal host_path(@host), current_path
 
     assert has_selector?('table.backups')
