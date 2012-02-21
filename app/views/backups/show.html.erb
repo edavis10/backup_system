@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Log:</b>
+  <%= @backup.log %>
+</p>
+
+<p>
+  <b>Host:</b>
+  <%= @backup.host_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_backup_path(@backup) %> |
+<%= link_to 'Back', backups_path %>

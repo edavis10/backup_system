@@ -1,4 +1,6 @@
 BackupSystem::Application.routes.draw do
+  resources :backups
+
   resources :hosts
 
   # The priority is based upon order of creation:
