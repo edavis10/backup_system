@@ -20,7 +20,15 @@
     <tr>
       <td><%= backup.id %></td>
       <td><%= format_datetime_to_iso(backup.created_at) %></td>
-      <td><%= truncate(backup.log) %></td>
+      <td>
+        <i class="icon-plus toggle"></i>
+        <span class="show-toggle">
+          <%= truncate(backup.log) %>
+        </span>
+        <span class="hide-toggle">
+          <%= backup.log %>
+        </span>
+      </td>
     </tr>
   <% end %>
 </table>
