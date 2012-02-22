@@ -1,8 +1,14 @@
 BackupSystem::Application.routes.draw do
+  resource :user_sessions
+  resources :users
+
   resources :hosts do
     resources :backups, :only => [:create]
   end
 
+  match 'login' => 'user_sessions#new', :as => :login
+  match 'logout' => 'user_sessions#destroy', :as => :logout
+  
   root :to => 'hosts#index'
   
   # The priority is based upon order of creation:
