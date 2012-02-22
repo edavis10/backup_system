@@ -11,4 +11,14 @@ class BackupTest < ActiveSupport::TestCase
     assert backup.valid?, "Backup with a host should be valid"
   end
 
+  test "should allow searching" do
+    host = Host.create(:name => 'localhost')
+    backup1 = Backup.create!(:host => host, :log => "Unique and similar content")
+    backup2 = Backup.create!(:host => host, :log => "New and similar content")
+    backup3 = Backup.create!(:host => host, :log => "Pretty and similar content")
+
+    assert_equal [backup1], Backup.search("Unique")
+    assert_equal [backup2], Backup.search("new")
+    assert_equal [backup1, backup2, backup3], Backup.search("similar content")
+  end
 end
