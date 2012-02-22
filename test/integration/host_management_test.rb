@@ -1,6 +1,19 @@
 require 'test_helper'
 
 class HostManagementTest < ActionDispatch::IntegrationTest
+  setup do
+    @user = User.create do |u|
+      u.email = 'test@example.com'
+      u.password = u.password_confirmation = 'test'
+    end
+    visit('/')
+    assert_equal '/login', current_path
+    fill_in "Username", :with => 'test@example.com'
+    fill_in "Password", :with => 'test'
+    click_button "Login"
+  end
+  
+
   test "should allow creating new hosts" do
     visit('/')
     assert_equal '/', current_path

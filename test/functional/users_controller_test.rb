@@ -1,8 +1,14 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
+  include Sorcery::TestHelpers::Rails
+  
   setup do
-    @user = users(:one)
+    @user = User.create do |u|
+      u.email = 'test@example.com'
+      u.password = u.password_confirmation = 'test'
+    end
+    login_user(@user)
   end
 
   test "should get index" do
@@ -18,10 +24,10 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should create user" do
     assert_difference('User.count') do
-      post :create, user: @user.attributes
+      post :create, user: {email: 'test2@example.com', password: 'test', password_confirmation: 'test' }
     end
 
-    assert_redirected_to user_path(assigns(:user))
+    assert_redirected_to users_path
   end
 
   test "should show user" do
@@ -35,8 +41,9 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should update user" do
-    put :update, id: @user, user: @user.attributes
+    put :update, id: @user, user: {email: 'test.change@example.com'}
     assert_redirected_to user_path(assigns(:user))
+    assert_equal 'test.change@example.com', @user.reload.email
   end
 
   test "should destroy user" do

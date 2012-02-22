@@ -1,7 +1,14 @@
 require 'test_helper'
 
 class HostsControllerTest < ActionController::TestCase
+  include Sorcery::TestHelpers::Rails
+  
   setup do
+    @user = User.create do |u|
+      u.email = 'test@example.com'
+      u.password = u.password_confirmation = 'test'
+    end
+    login_user(@user)
     @host = hosts(:one)
   end
 
