@@ -6,13 +6,25 @@ class BackupTest < ActiveSupport::TestCase
     assert backup.invalid?, "Backup should be invalid without a host"
     assert backup.errors[:host_id].any?, "Backup without a host should have errors"
 
-    host = Host.create(:name => 'localhost')
+    user = User.create! do |u|
+      u.email = 'test@example.com'
+      u.password = u.password_confirmation = 'testing'
+    end
+    host = Host.create(:name => 'localhost') do |h|
+      h.user = user
+    end
     backup.host = host
     assert backup.valid?, "Backup with a host should be valid"
   end
 
   test "should allow searching" do
-    host = Host.create(:name => 'localhost')
+    user = User.create! do |u|
+      u.email = 'test@example.com'
+      u.password = u.password_confirmation = 'testing'
+    end
+    host = Host.create(:name => 'localhost') do |h|
+      h.user = user
+    end
     backup1 = Backup.create!(:host => host, :log => "Unique and similar content")
     backup2 = Backup.create!(:host => host, :log => "New and similar content")
     backup3 = Backup.create!(:host => host, :log => "Pretty and similar content")

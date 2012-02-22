@@ -6,15 +6,12 @@ class CreatingBackupTest < ActionDispatch::IntegrationTest
       u.email = 'test@example.com'
       u.password = u.password_confirmation = 'test'
     end
-    visit('/')
-    assert_equal '/login', current_path
-    fill_in "Username", :with => 'test@example.com'
-    fill_in "Password", :with => 'test'
-    click_button "Login"
   end
 
   test "should allow creating a new backup on a host using the API" do
-    @host = Host.create!(:name => 'test.example.com')
+    sign_in('test@example.com', 'test')
+    
+    @host = Host.create!(:name => 'test.example.com') {|h| h.user = @user }
 
     page.driver.post host_backups_path(@host, :format => "json"), "backup" => {"log" => "The backup was successful"}
     

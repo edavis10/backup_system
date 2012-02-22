@@ -14,6 +14,19 @@ end
 
 require 'capybara/rails'
 
+module BackupSystem
+  module CapybaraHelpers
+    def sign_in(email, password)
+      visit('/')
+      assert_equal '/login', current_path
+      fill_in 'Username', :with => email
+      fill_in 'Password', :with => password
+      click_button 'Login'
+      assert_equal '/', current_path
+    end
+  end
+end
+
 # Transactional fixtures do not work with Selenium tests, because Capybara
 # uses a separate server thread, which the transactions would be hidden
 # from. We hence use DatabaseCleaner to truncate our test database.
@@ -23,6 +36,7 @@ class ActionDispatch::IntegrationTest
   # Make the Capybara DSL available in all integration tests
   include Capybara::DSL
 
+  include BackupSystem::CapybaraHelpers
   # Stop ActiveRecord from wrapping tests in transactions
   self.use_transactional_fixtures = false
 
