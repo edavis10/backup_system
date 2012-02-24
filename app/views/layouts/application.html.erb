@@ -11,7 +11,18 @@
   <div class="navbar">
     <div class="navbar-inner">
       <div class="container">
+
         <a class="brand" href="/">Backup System</a>
+
+        <ul class="nav pull-right">
+          <% if current_user %>
+            <li><%= link_to current_user.email, user_path(current_user) %></li>
+            <li><%= link_to "Logout", :logout %></li>
+          <% else %>
+            <li><%= link_to "Login", :login %></li>
+          <% end %>
+        </ul>
+
       </div>
     </div>
   </div>
@@ -22,17 +33,19 @@
       
       <ul class="nav nav-list">
         <li class="nav-header">Navigation</li>
-        <li><%= link_to("Hosts", hosts_path) %></li>
+        <li><%= link_to(hosts_path) do %>
+            <i class="icon-home"></i> Hosts
+        <% end %></li>
       </ul>
-
     </div>
     <% end %>
     <div class="content span10">
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
-       <% if current_user %>
-       <p>Logged in as <%= current_user.email %>. <%= link_to "Logout", :logout %></p>
-       <% end %>
+      <% if notice.present? %>
+      <div class="alert"><%= notice %></div>
+      <% end %>
+      <% if alert.present? %>
+      <div class="alert alert-error"><%= alert %></div>
+      <% end %>
       <%= yield %>
     </div>
   </div>

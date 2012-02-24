@@ -1,0 +1,18 @@
+@import "scaffolds";
+
+$blue: #009DDC;
+$grayLighter: #f5f5f5;
+
+$navbarBackground: $blue;
+$navbarBackgroundHighlight: $blue;
+$navbarText: $grayLighter;
+$navbarLinkColor: $grayLighter;
+$navbarLinkColorHover: white;
+
+$baseFontFamily: Arial, Helvetica, sans-serif;
+$baseFontSize: 16px;
+$baseLineHeight: 24px;
+
+// import original bootstrap
+@import "bootstrap";
+@import "responsive";
