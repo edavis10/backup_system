@@ -1,0 +1,16 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: backup_system_test
+  pool: 5
+  username: CI_USER
+  password: CI_PASSWORD
+  template: template0
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: backup_system_test
+  pool: 5
+  username: CI_USER
+  password: CI_PASSWORD
+  template: template0
