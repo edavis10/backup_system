@@ -5,7 +5,8 @@ development:
   pool: 5
   username: CI_USER
   password: CI_PASSWORD
-  template: template0
+  template: template1
+  host: localhost
 test:
   adapter: postgresql
   encoding: unicode
@@ -13,4 +14,5 @@ test:
   pool: 5
   username: CI_USER
   password: CI_PASSWORD
-  template: template0
+  template: template1
+  host: localhost
