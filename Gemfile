@@ -42,6 +42,7 @@ group :development, :test do
   gem "autotest"
   gem "autotest-notification"
   gem "autotest-rails"
+  gem "therubyracer"
 end
 
 group :test do
