@@ -1,4 +1,12 @@
 ENV["RAILS_ENV"] = "test"
+
+begin
+  require 'turn/autorun'
+  Turn.config.trace = 10
+  Turn.config.ansi = true if ENV['CIBUILD'].nil?
+rescue LoadError
+end
+
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 

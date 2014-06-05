@@ -33,6 +33,7 @@ GEM
     anjlab-bootstrap-rails (2.0.1.1)
       railties (>= 3.0)
       sass
+    ansi (1.4.3)
     arel (3.0.3)
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
@@ -81,6 +82,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
+    minitest (4.7.5)
     multi_json (1.10.1)
     multipart-post (1.1.5)
     nokogiri (1.5.0)
@@ -144,6 +146,9 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
+    turn (0.9.7)
+      ansi
+      minitest (~> 4)
     tzinfo (0.3.39)
     uglifier (1.2.3)
       execjs (>= 0.3.0)
@@ -168,4 +173,5 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   sorcery (= 0.7.6)
   therubyracer
+  turn
   uglifier (>= 1.0.3)
