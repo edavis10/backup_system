@@ -40,7 +40,7 @@ class HostsController < ApplicationController
   # POST /hosts
   # POST /hosts.json
   def create
-    @host = current_user.hosts.new(params[:host])
+    @host = current_user.hosts.new(host_params)
 
     respond_to do |format|
       if @host.save
@@ -59,7 +59,7 @@ class HostsController < ApplicationController
     @host = current_user.hosts.find(params[:id])
 
     respond_to do |format|
-      if @host.update_attributes(params[:host])
+      if @host.update_attributes(host_params)
         format.html { redirect_to @host, notice: 'Host was successfully updated.' }
         format.json { head :no_content }
       else
@@ -79,5 +79,12 @@ class HostsController < ApplicationController
       format.html { redirect_to hosts_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def host_params
+    params.require(:host).permit(:name,
+                                 :description)
   end
 end

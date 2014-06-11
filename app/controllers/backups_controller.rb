@@ -2,7 +2,7 @@ class BackupsController < ApplicationController
   # POST /backups.json
   def create
     @host = Host.find(params[:host_id])
-    @backup = @host.backups.new(params[:backup])
+    @backup = @host.backups.new(backup_params)
 
     respond_to do |format|
       if @backup.save
@@ -11,5 +11,11 @@ class BackupsController < ApplicationController
         format.json { render json: @backup.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  private
+
+  def backup_params
+    params.require(:backup).permit(:log)
   end
 end

@@ -4,6 +4,4 @@ class Host < ActiveRecord::Base
   
   validates :name, :presence => true
   validates :user_id, :presence => true
-
-  attr_accessible :name, :description, :created_at, :updated_at
 end
