@@ -19,7 +19,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 
-gem "sorcery", "0.7.6"
+gem "sorcery", "0.8.5"
 
 group :doc do
   gem 'sdoc', require: false
