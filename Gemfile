@@ -8,24 +8,25 @@ gem 'rails', '4.0.5'
 gem 'pg'
 
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 4.0.2'
-  gem 'coffee-rails', '~> 4.0.0'
+gem 'sass-rails',   '~> 4.0.2'
+gem 'coffee-rails', '~> 4.0.0'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer'
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer'
 
-  gem 'uglifier', '>= 1.0.3'
-end
+gem 'uglifier', '>= 1.3.0'
 
 gem 'jquery-rails'
+gem 'turbolinks'
 
 gem "sorcery", "0.7.6"
 
+group :doc do
+  gem 'sdoc', require: false
+end
+
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+# gem 'bcrypt', '~> 3.1.7'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
@@ -34,7 +35,7 @@ gem "sorcery", "0.7.6"
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+# gem 'capistrano', group: :development
 
 gem 'anjlab-bootstrap-rails', '>= 2.0', :require => 'bootstrap-rails'
 
