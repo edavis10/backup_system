@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.18'
+gem 'rails', '4.1.1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -8,24 +8,25 @@ gem 'rails', '3.2.18'
 gem 'pg'
 
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+gem 'sass-rails',   '~> 4.0.2'
+gem 'coffee-rails', '~> 4.0.0'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer'
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer'
 
-  gem 'uglifier', '>= 1.0.3'
-end
+gem 'uglifier', '>= 1.3.0'
 
 gem 'jquery-rails'
+gem 'turbolinks'
 
-gem "sorcery", "0.7.6"
+gem "sorcery", "0.8.5"
+
+group :doc do
+  gem 'sdoc', require: false
+end
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+# gem 'bcrypt', '~> 3.1.7'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
@@ -34,7 +35,7 @@ gem "sorcery", "0.7.6"
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+# gem 'capistrano', group: :development
 
 gem 'anjlab-bootstrap-rails', '>= 2.0', :require => 'bootstrap-rails'
 
@@ -48,5 +49,4 @@ end
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
-  gem "turn"
 end

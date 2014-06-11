@@ -6,8 +6,8 @@ BackupSystem::Application.routes.draw do
     resources :backups, :only => [:create]
   end
 
-  match 'login' => 'user_sessions#new', :as => :login
-  match 'logout' => 'user_sessions#destroy', :as => :logout
+  get 'login' => 'user_sessions#new', :as => :login
+  post 'logout' => 'user_sessions#destroy', :as => :logout
   
   root :to => 'hosts#index'
   
